@@ -16,4 +16,9 @@ pipeline {
             }
         }
     }
+	post {
+	    success {
+		    echo "Well Done!"
+		}
+	}
 }
