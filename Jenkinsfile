@@ -1,8 +1,10 @@
 pipeline {
-    agent { dokcer 'maven:3-alpine' }
-	stages('Example Build') {
-	    steps {
-		    sh 'mvn -B clean verify'
+    agent { docker 'maven:3-alpine' }
+    stages {
+        stage('Example Build') {
+            steps {
+                sh 'mvn -B clean verify'
+            }
         }
     }
 }
