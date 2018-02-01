@@ -53,7 +53,6 @@ pipeline {
 		    steps { echo "On Brance B" }
 		}
 	}
-
 	post {
 	    success {
 		    echo "Well Done!"
