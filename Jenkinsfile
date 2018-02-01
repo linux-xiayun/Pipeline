@@ -51,6 +51,7 @@ pipeline {
 			}
 			stage('Branch B') {
 			    steps { echo "On Branch B" }
+			}
 		}
     }
 	post {
