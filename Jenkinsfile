@@ -45,7 +45,15 @@ pipeline {
 			    echo "Hello ${params.PERSON}"
 			}
 		}
+		parallel {
+		    stage('Branch A') {
+			    steps { echo "On Branch A" }
+			}
+			stage('Branch B') {
+			    steps { echo "On Branch B" }
+		}
     }
+	
 
 	post {
 	    success {
