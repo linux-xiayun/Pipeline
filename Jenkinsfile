@@ -1,9 +1,9 @@
 pipeline {
     agent none
-	//parameters {
-    //    string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
-    //}
-	//triggers { pollSCM('*/1 * * * *') }
+	parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
+	
     stages {
         stage('Maven Build') {
             agent { docker 'maven:3-alpine' }
@@ -16,18 +16,19 @@ pipeline {
                 sh 'mvn --version'
             }
         }
-		//stage('Aborted') {
-		    //input {
-		    //    message "Should we continue?"
-			//    ok "Yes, we should."
-			//	parameters {
-			//	    string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
-			//	}
-		    //}
-			//steps {
-			//    echo "Hello, ${PERSON}, nice to meet you."
-			//}
-		//}
+		stage('Aborted') {
+		    input {
+		        message "Should we continue?"
+			    ok "Yes, we should."
+
+				parameters {
+				    string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
+				}
+		    }
+			steps {
+			    echo "Hello, ${PERSON}, nice to meet you."
+			}
+		}
         stage('Java Build') {
             agent { docker 'openjdk:8-jre' }
 			options { 
@@ -39,20 +40,13 @@ pipeline {
                 sh 'java -version'
             }
         }
-		//stage('Finished'){
-		//    steps {
-		//	    echo "Hello ${params.PERSON}"
-		//	}
-		//}
+		stage('Finished'){
+		    steps {
+			    echo "Hello ${params.PERSON}"
+			}
+		}
     }
-	parallel {
-	    stage('Brance A') {
-		    steps { echo "On Brance A" }
-		}
-		stage('Brance B'){
-		    steps { echo "On Brance B" }
-		}
-	}
+
 	post {
 	    success {
 		    echo "Well Done!"
