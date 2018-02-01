@@ -46,13 +46,14 @@ pipeline {
 		    	    steps { echo "On Branch A" }
 		    	}
 		    	stage('Branch B') {
-		    	    steps { echo "On Branch B" }
+		    	    steps { echo "On Branch B" 
 					
 					script {
 					    def browsers = ['chrome', 'firefox']
 						for (int i = 0; i < browsers.size(); ++i) {
 						    echo "Testing the ${browsers[i]} browser"
 							}
+						}
 					}
 		    	}
 		    }
