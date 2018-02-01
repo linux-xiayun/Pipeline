@@ -40,21 +40,24 @@ pipeline {
                 sh 'java -version'
             }
         }
+		stage("Test") {
+		    parallel {
+		        stage('Branch A') {
+		    	    steps { echo "On Branch A" }
+		    	}
+		    	stage('Branch B') {
+		    	    steps { echo "On Branch B" }
+		    	}
+		    }
+		}
 		stage('Finished'){
 		    steps {
 			    echo "Hello ${params.PERSON}"
 			}
 		}
-		failFast true
-		parallel {
-		    stage('Branch A') {
-			    steps { echo "On Branch A" }
-			}
-			stage('Branch B') {
-			    steps { echo "On Branch B" }
-			}
-		}
     }
+	
+
 	post {
 	    success {
 		    echo "Well Done!"
@@ -65,5 +68,6 @@ pipeline {
 		unstable {
 		    echo "en...unstable!"
 		}
+		
 	}
 }
