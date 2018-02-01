@@ -1,7 +1,7 @@
 pipeline {
     agent none
 	parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
     }
 	triggers { pollSCM('*/1 * * * *') }
     stages {
@@ -16,18 +16,18 @@ pipeline {
                 sh 'mvn --version'
             }
         }
-		stage('Aborted') {
+		//stage('Aborted') {
 		    //input {
 		    //    message "Should we continue?"
 			//    ok "Yes, we should."
-				parameters {
-				    string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
-				}
-		    }
-			steps {
-			    echo "Hello, ${PERSON}, nice to meet you."
-			}
-		}
+			//	parameters {
+			//	    string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
+			//	}
+		    //}
+			//steps {
+			//    echo "Hello, ${PERSON}, nice to meet you."
+			//}
+		//}
         stage('Java Build') {
             agent { docker 'openjdk:8-jre' }
 			options { 
