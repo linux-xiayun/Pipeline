@@ -4,7 +4,7 @@ pipeline {
     //    string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
     //}
 	triggers { pollSCM('*/1 * * * *') }
-    stages {
+    parallel {
         stage('Maven Build') {
             agent { docker 'maven:3-alpine' }
 			options { 
