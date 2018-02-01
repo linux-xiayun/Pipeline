@@ -53,8 +53,6 @@ pipeline {
 			    steps { echo "On Branch B" }
 		}
     }
-	
-
 	post {
 	    success {
 		    echo "Well Done!"
@@ -65,6 +63,5 @@ pipeline {
 		unstable {
 		    echo "en...unstable!"
 		}
-		
 	}
 }
