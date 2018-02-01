@@ -1,5 +1,8 @@
 pipeline {
     agent none
+	parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
     stages {
         stage('Maven Build') {
             agent { docker 'maven:3-alpine' }
@@ -36,7 +39,13 @@ pipeline {
                 sh 'java -version'
             }
         }
+		stage('Finished'){
+		    steps {
+			    echo "Hello ${params.PERSON}"
+			}
+		}
     }
+
 	post {
 	    success {
 		    echo "Well Done!"
