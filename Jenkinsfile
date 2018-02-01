@@ -45,6 +45,7 @@ pipeline {
 			    echo "Hello ${params.PERSON}"
 			}
 		}
+		failFast true
 		parallel {
 		    stage('Branch A') {
 			    steps { echo "On Branch A" }
