@@ -1,8 +1,8 @@
 pipeline {
     agent none
-	parameters {
-        string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
-    }
+	//parameters {
+    //    string(name: 'PERSON', defaultValue: 'Mr XiaYun', description: 'Who should I say hello to?')
+    //}
 	triggers { pollSCM('*/1 * * * *') }
     stages {
         stage('Maven Build') {
@@ -39,11 +39,11 @@ pipeline {
                 sh 'java -version'
             }
         }
-		stage('Finished'){
-		    steps {
-			    echo "Hello ${params.PERSON}"
-			}
-		}
+		//stage('Finished'){
+		//    steps {
+		//	    echo "Hello ${params.PERSON}"
+		//	}
+		//}
     }
 
 	post {
