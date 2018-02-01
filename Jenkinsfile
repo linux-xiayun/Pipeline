@@ -12,7 +12,7 @@ pipeline {
                 sh 'mvn --version'
             }
         }
-		stage('Example') {
+		stage('Aborted') {
 		    input {
 		        message "Should we continue?"
 			    ok "Yes, we should."
