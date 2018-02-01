@@ -20,5 +20,12 @@ pipeline {
 	    success {
 		    echo "Well Done!"
 		}
+		failure {
+		    echo "sorry failed!"
+		}
+		unstable {
+		    echo "en...unstable!"
+		}
+		
 	}
 }
