@@ -60,7 +60,7 @@ pipeline {
 		}
 		stage('Finished'){
 		    steps {
-			    echo "Hello ${params.PERSON}"
+			    echo "Hello ${params.PERSON} It's finished successfully!"
 			}
 		}
     }
